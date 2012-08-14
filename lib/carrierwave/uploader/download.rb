@@ -57,7 +57,7 @@ module CarrierWave
         unless uri.blank?
           processed_uri = process_uri(uri)
           file = RemoteFile.new(processed_uri)
-          raise CarrierWave::DownloadError, "trying to download a file which is not served over HTTP" unless file.http?
+          raise CarrierWave::DownloadError, I18n.t('carrierwave.download_error') unless file.http?
           cache!(file)
         end
       end
